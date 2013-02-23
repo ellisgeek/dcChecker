@@ -30,6 +30,7 @@ int main(int argc, const char * argv[])
     std::cin >> diceMod;
 
     roll = rollDice(sides);
+<<<<<<< HEAD
 
     if(diceCheck(diceMod, neededRoll, roll) == 0)
     {
@@ -37,13 +38,26 @@ int main(int argc, const char * argv[])
                   << "You rolled a " << sides << " sided die\n"
                   << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n"
                   << "You needed: " << neededRoll << "\n";
+=======
+    
+    //success roll
+    if(diceCheck(diceMod, neededRoll, roll) == 0)
+    {
+        std::cout << "\nSUCCESS\n\n" << "You rolled a " << sides << " sided die\n" << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n" << "You needed: " << neededRoll << "\n";
+>>>>>>> wording edits
     }
+    
+    //fail roll
     else
     {
+<<<<<<< HEAD
         std::cout << "\nFAILURE!!!\n\n"
                   << "You rolled a " << sides << " sided die\n"
                   << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n"
                   << "You needed: " << neededRoll << "\n";
+=======
+        std::cout << "\nFAILURE!!!\n\n" << "You rolled a " << sides << " sided die\n" << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n" << "You needed: " << neededRoll << "\n";
+>>>>>>> wording edits
     }
     return 0;
 }
@@ -51,10 +65,15 @@ int main(int argc, const char * argv[])
 int rollDice(int sides)
 {
     int gen;
+<<<<<<< HEAD
     time_t timer;
     time(&timer);
     srand(timer);
     gen = (rand()% sides + 1); //roll 20 sided die
+=======
+    srandom(time(NULL));
+    gen = (random()% sides + 1); //roll ___ sided die
+>>>>>>> wording edits
     return gen;
 }
 
