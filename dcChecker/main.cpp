@@ -7,6 +7,8 @@
 //
 
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 
 int rollDice(int sides);
 int diceCheck(int diceMod, int dci, int roll);
@@ -18,7 +20,7 @@ int main(int argc, const char * argv[])
     int diceMod;
     int sides;
     int roll;
-    
+
     // insert code here...
     std::cout << "How many sides: ";
     std::cin >> sides;
@@ -26,16 +28,22 @@ int main(int argc, const char * argv[])
     std::cin >> neededRoll;
     std::cout << "Enter dice modifiers: ";
     std::cin >> diceMod;
-    
+
     roll = rollDice(sides);
-    
+
     if(diceCheck(diceMod, neededRoll, roll) == 0)
     {
-        std::cout << "\nSUCCESS\n\n" << "You rolled a " << sides << "die\n" << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n" << "You needed: " << neededRoll << "\n";
+        std::cout << "\nSUCCESS\n\n"
+                  << "You rolled a " << sides << " sided die\n"
+                  << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n"
+                  << "You needed: " << neededRoll << "\n";
     }
     else
     {
-        std::cout << "\nFAILURE!!!\n\n" << "You rolled a " << sides << " sided die\n" << "You rolled: " << roll << " + " << diceMod << "\n" << "You needed: " << neededRoll << "\n";
+        std::cout << "\nFAILURE!!!\n\n"
+                  << "You rolled a " << sides << " sided die\n"
+                  << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n"
+                  << "You needed: " << neededRoll << "\n";
     }
     return 0;
 }
@@ -43,8 +51,10 @@ int main(int argc, const char * argv[])
 int rollDice(int sides)
 {
     int gen;
-    srandom(time(NULL));
-    gen = (random()% sides + 1); //roll 20 sided die
+    time_t timer;
+    time(&timer);
+    srand(timer);
+    gen = (rand()% sides + 1); //roll 20 sided die
     return gen;
 }
 
