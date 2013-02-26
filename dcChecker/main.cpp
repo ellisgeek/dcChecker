@@ -20,7 +20,7 @@ void menu();
 
 int main()
 {
-  menu();
+    menu();
 }
 
 // Roll a n sided die
@@ -57,13 +57,13 @@ int diceCheck(int diceMod, int dci, int roll)
 //Clear the screen
 void clearScreen()
 {
-    #ifdef _WIN32
-        std::system ( "CLS" );
+#ifdef _WIN32
+    std::system ( "CLS" );
 
-    #else
-        // Assume POSIX
-        std::system ( "clear" );
-    #endif
+#else
+    // Assume POSIX
+    std::system ( "clear" );
+#endif
 }
 
 //Wait for the user to press ENTER
@@ -103,9 +103,9 @@ void dcFunction()
     if(diceCheck(diceMod, neededRoll, roll) == 0)
     {
         std::cout << "\nSUCCESS\n\n"
-        << "You rolled a " << sides << " sided die\n"
-        << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n"
-        << "You needed: " << neededRoll << "\n";
+                  << "You rolled a " << sides << " sided die\n"
+                  << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n"
+                  << "You needed: " << neededRoll << "\n";
     }
 
     //otherwise you fail
@@ -113,35 +113,37 @@ void dcFunction()
     {
 
         std::cout << "\nFAILURE!!!\n\n"
-        << "You rolled a " << sides << " sided die\n"
-        << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n"
-        << "You needed: " << neededRoll << "\n";
+                  << "You rolled a " << sides << " sided die\n"
+                  << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n"
+                  << "You needed: " << neededRoll << "\n";
     }
     pressEnter();
     main();
 }
 
 void menu()
-  {
+{
     do
-      {
+    {
         clearScreen();
         int input;
-        std::cout << "Enter the number that corrisponds to the menu entry that you want!\n\n";
+        std::cout << "\n\n\n\n\n\nEnter the number that corrisponds to the menu entry that you want!\n\n";
 
         //Add menu entries to this cout!
-        std::cout << "________________"
-                  << "|1 - Dice Check|\n"
-                  << "|2 - Exit      |\n"
-                  << "----------------\n\n";
+        std::cout << " ________________\n"
+                  << "|                |\n"
+                  << "| 1 - Dice Check |\n"
+                  << "| 2 - Exit       |\n"
+                  << "|________________|\n\n";
         std::cout << "Selection: ";
         std::cin >> input;
         switch(input)
-          {
-            case (1):
-              dcFunction();
-            case (2):
-              exit(0);
-          }
-      }while(true);
-  }
+        {
+        case (1):
+            dcFunction();
+        case (2):
+            exit(0);
+        }
+    }
+    while(true);
+}

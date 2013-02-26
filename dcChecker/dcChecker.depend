@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1361908882 source:c:\users\saphira bjartskular\documents\github\dcchecker\dcchecker\main.cpp
+	<iostream>
+	<ctime>
+	<cstdlib>
+
