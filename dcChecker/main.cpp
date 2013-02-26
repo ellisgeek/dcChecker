@@ -28,16 +28,16 @@ int main()
 int rollDice(int sides)
 {
     //int gen;
-    
+
     //create time variable
     time_t timer;
-    
+
     //set time variable to current time in seconds
     time(&timer);
-    
+
     //seed random number generator using current time in seconds
     srand(timer);
-    
+
     //generate random number
     //gen = (rand()% sides + 1);
 
@@ -57,9 +57,9 @@ int diceCheck(int diceMod, int dci, int roll)
 
 void clearScreen()
 {
-    #ifdef WINDOWS
+    #ifdef _WIN32
         std::system ( "CLS" );
-    
+
     #else
         // Assume POSIX
         std::system ( "clear" );
@@ -79,7 +79,7 @@ void dcFunction()
     int diceMod;
     int sides;
     int roll;
-    
+
     //get user inputs
     std::cout << "How many sides: ";
     std::cin >> sides;
@@ -87,12 +87,12 @@ void dcFunction()
     std::cin >> neededRoll;
     std::cout << "Enter dice modifiers: ";
     std::cin >> diceMod;
-    
+
     //store roll in variable so it can be gotten later
     roll = rollDice(sides);
-    
+
     //check if your roll was better than the dice check
-    
+
     //success check
     if(diceCheck(diceMod, neededRoll, roll) == 0)
     {
@@ -101,11 +101,11 @@ void dcFunction()
         << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n"
         << "You needed: " << neededRoll << "\n";
     }
-    
+
     //otherwise you fail
     else
     {
-        
+
         std::cout << "\nFAILURE!!!\n\n"
         << "You rolled a " << sides << " sided die\n"
         << "You rolled: " << roll << " + " << diceMod << " = " << roll + diceMod << "\n"
