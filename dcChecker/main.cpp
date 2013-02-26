@@ -15,13 +15,12 @@ int diceCheck(int diceMod, int dci, int roll);
 void clearScreen();
 void pressEnter();
 void dcFunction();
+void menu();
 
 
 int main()
 {
-    dcFunction();
-    clearScreen();
-    main();
+  menu();
 }
 
 // Roll a n sided die
@@ -55,6 +54,7 @@ int diceCheck(int diceMod, int dci, int roll)
         return 1;
 }
 
+//Clear the screen
 void clearScreen()
 {
     #ifdef _WIN32
@@ -65,6 +65,8 @@ void clearScreen()
         std::system ( "clear" );
     #endif
 }
+
+//Wait for the user to press ENTER
 void pressEnter()
 {
     std::cin.sync();
@@ -72,6 +74,7 @@ void pressEnter()
     std::cin.get();
 }
 
+//Dice Check function
 void dcFunction()
 {
     //define variables
@@ -79,6 +82,9 @@ void dcFunction()
     int diceMod;
     int sides;
     int roll;
+
+    //Clear Screen
+    clearScreen();
 
     //get user inputs
     std::cout << "How many sides: ";
@@ -112,4 +118,30 @@ void dcFunction()
         << "You needed: " << neededRoll << "\n";
     }
     pressEnter();
+    main();
 }
+
+void menu()
+  {
+    do
+      {
+        clearScreen();
+        int input;
+        std::cout << "Enter the number that corrisponds to the menu entry that you want!\n\n";
+
+        //Add menu entries to this cout!
+        std::cout << "________________"
+                  << "|1 - Dice Check|\n"
+                  << "|2 - Exit      |\n"
+                  << "----------------\n\n";
+        std::cout << "Selection: ";
+        std::cin >> input;
+        switch(input)
+          {
+            case (1):
+              dcFunction();
+            case (2):
+              exit(0);
+          }
+      }while(true);
+  }
