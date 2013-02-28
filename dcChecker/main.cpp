@@ -10,13 +10,13 @@
 #include <ctime>
 #include <cstdlib>
 
-int rollDice(int);
+int rollDie(int sides);
 int diceCheck(int diceMod, int dci, int roll);
 void clearScreen();
 void pressEnter();
 void dcFunction();
+void diceRoller(int numDice, int sides);
 void menu();
-
 
 int main()
 {
@@ -24,7 +24,7 @@ int main()
 }
 
 // Roll a n sided die
-int rollDice(int sides)
+int rollDie(int sides)
 {
     //int gen;
 
@@ -95,7 +95,7 @@ void dcFunction()
     std::cin >> diceMod;
 
     //store roll in variable so it can be gotten later
-    roll = rollDice(sides);
+    roll = rollDie(sides);
 
     //check if your roll was better than the dice check
 
@@ -121,6 +121,27 @@ void dcFunction()
     main();
 }
 
+void diceRoller()
+{
+  int numDice;
+  int numSides;
+  int numRolled = 0;
+
+  //get user inputs
+    std::cout << "How many dice: ";
+    std::cin >> numDice;
+    std::cout << "How mane sides: ";
+    std::cin >> numSides;
+
+  while(numRolled < numDice)
+    {
+    std::cout << rollDie(numSides) << "\n";
+    numRolled++;
+    }
+  pressEnter();
+  main();
+}
+
 void menu()
 {
     do
@@ -133,7 +154,8 @@ void menu()
         std::cout << " ________________\n"
                   << "|                |\n"
                   << "| 1 - Dice Check |\n"
-                  << "| 2 - Exit       |\n"
+                  << "| 2 - Roll Dice  |\n"
+                  << "| 3 - Exit       |\n"
                   << "|________________|\n\n";
         std::cout << "Selection: ";
         std::cin >> input;
@@ -142,8 +164,11 @@ void menu()
         case (1):
             dcFunction();
         case (2):
+            diceRoller();
+        case (3):
             exit(0);
         }
     }
     while(true);
 }
+
