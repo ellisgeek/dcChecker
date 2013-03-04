@@ -9,6 +9,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <limits>
 
 int rollDie(int sides);
 int diceCheck(int diceMod, int dci, int roll);
@@ -69,9 +70,9 @@ void clearScreen()
 //Wait for the user to press ENTER
 void pressEnter()
 {
-    std::cin.sync();
-    std::cout << std::endl << "Press ENTER to continue..." << std::endl;
-    std::cin.get();
+    std::cin.ignore();
+    std::cout << "\nPress ENTER to Continue";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 }
 
 //Dice Check function
