@@ -21,13 +21,7 @@ void menu();
 
 int main()
 {
-    menu();
-}
-
-// Roll a n sided die
-int rollDie(int sides)
-{
-    //int gen;
+  //int gen;
 
     //create time variable
     time_t timer;
@@ -38,10 +32,18 @@ int rollDie(int sides)
     //seed random number generator using current time in seconds
     srand(timer);
 
+    //Load Menu
+    menu();
+}
+
+// Roll a n sided die
+int rollDie(int sides)
+{
     //generate random number
     //gen = (rand()% sides + 1);
-
-    return(rand()% sides + 1);
+    int rnumber = rand();
+    return(rnumber% sides + 1);
+    srand(rnumber);
 }
 
 // Check if the dice roll + modifier (if any) is greater than the check value
